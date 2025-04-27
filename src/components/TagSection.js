@@ -17,7 +17,7 @@ const formatTimestamp = (timestamp) => {
   });
 };
 
-const TagSection = ({ title, tags, isLoading, error, showTimestamp }) => {
+const TagSection = ({ title, tags, isLoading, error, showTimestamp, isRecentList }) => {
   if (isLoading) {
     return (
       <Section>
@@ -46,7 +46,11 @@ const TagSection = ({ title, tags, isLoading, error, showTimestamp }) => {
       <TagList>
         {tags && tags.length > 0 ? (
           tags.map((tag, index) => (
-            <TagItem key={index} $accent={index < 3}>
+            <TagItem 
+              key={index} 
+              $accent={!isRecentList && index < 3}
+              $isRecent={isRecentList}
+            >
               <TagName>{tag.tag}</TagName>
               {showTimestamp ? (
                 <TimeStamp>{formatTimestamp(tag.timestamp)}</TimeStamp>

@@ -1,20 +1,21 @@
 import { createGlobalStyle } from 'styled-components';
 
-// Updated Cyberpunk color palette with blues and cyans
+// Updated Cyberpunk color palette with more blues and magenta
 export const theme = {
   colors: {
     background: '#0B1622',     // Dark navy blue
     primary: '#00CCFF',        // Bright cyan
-    secondary: '#1E88E5',      // Medium blue
-    accent: '#00FFCC',         // Bright turquoise
+    secondary: '#036BFC',      // Vibrant blue
+    accent: '#F055A9',         // Magenta accent
     highlight: '#4CC9F0',      // Sky blue
     blue: '#0077B6',           // Deep blue
     text: '#E6F1FF',           // Ice blue
     darkBlue: '#0C2D48',       // Deep navy
     darkCyan: '#065A82',       // Dark teal
     accentDark: '#073B4C',     // Dark cyan
+    magenta: '#D926AA',        // Deep magenta
     gradientStart: '#0F2D48',  // Deep blue for gradients
-    gradientEnd: '#206591',    // Medium blue for gradients
+    gradientEnd: '#1170CC',    // Brighter blue for gradients
   },
   fonts: {
     main: "'VT323', 'Courier New', monospace",

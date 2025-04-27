@@ -69,7 +69,7 @@ export const Section = styled.section`
   border-radius: ${theme.borderRadius};
   padding: 20px;
   box-shadow: ${theme.boxShadow};
-  border: 1px solid rgba(0, 204, 255, 0.2);
+  border: 1px solid rgba(3, 107, 252, 0.25);
   position: relative;
   overflow: hidden;
   
@@ -82,7 +82,7 @@ export const Section = styled.section`
     height: 2px;
     background: linear-gradient(90deg, 
       transparent, 
-      ${theme.colors.primary}, 
+      ${theme.colors.secondary}, 
       transparent
     );
   }
@@ -126,7 +126,14 @@ export const TagItem = styled.li`
   align-items: center;
   transition: transform 0.2s, box-shadow 0.2s;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  border-left: 2px solid ${props => props.$accent ? theme.colors.accent : theme.colors.primary};
+  border-left: ${props => {
+    // For Recent Tags list, use only blue borders regardless of position
+    if (props.$isRecent) {
+      return `2px solid ${theme.colors.secondary}`;
+    }
+    // For Popular Tags list, use magenta for top 3, cyan for the rest
+    return `2px solid ${props.$accent ? theme.colors.accent : theme.colors.primary}`;
+  }};
   
   &:hover {
     transform: translateY(-2px);
@@ -142,7 +149,7 @@ export const TagName = styled.span`
   
   &::before {
     content: "#";
-    color: ${theme.colors.primary};
+    color: ${props => props.theme.colors.magenta};
     margin-right: 4px;
     font-weight: bold;
   }
@@ -162,7 +169,7 @@ export const TagCount = styled.span`
 export const TimeStamp = styled.span`
   color: ${theme.colors.highlight};
   font-size: ${theme.fontSize.xs};
-  background-color: rgba(0, 204, 255, 0.1);
+  background-color: rgba(3, 107, 252, 0.15);
   padding: 2px 8px;
   border-radius: 12px;
   letter-spacing: 0.5px;
@@ -224,7 +231,7 @@ export const Footer = styled.footer`
 `;
 
 export const RefreshButton = styled.button`
-  background: linear-gradient(135deg, ${theme.colors.secondary}, ${theme.colors.primary});
+  background: linear-gradient(135deg, ${theme.colors.secondary}, ${theme.colors.blue});
   color: ${theme.colors.text};
   border: none;
   border-radius: 20px;
@@ -235,7 +242,7 @@ export const RefreshButton = styled.button`
   margin: 0 auto 20px;
   display: block;
   letter-spacing: 0.5px;
-  box-shadow: 0 3px 10px rgba(0, 204, 255, 0.25);
+  box-shadow: 0 3px 10px rgba(3, 107, 252, 0.25);
   transition: all 0.2s ease;
   position: relative;
   overflow: hidden;
@@ -258,7 +265,7 @@ export const RefreshButton = styled.button`
   
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0, 204, 255, 0.35);
+    box-shadow: 0 4px 15px rgba(3, 107, 252, 0.35);
     
     &::before {
       left: 100%;
@@ -267,7 +274,7 @@ export const RefreshButton = styled.button`
   
   &:active {
     transform: translateY(1px);
-    box-shadow: 0 2px 8px rgba(0, 204, 255, 0.25);
+    box-shadow: 0 2px 8px rgba(3, 107, 252, 0.25);
   }
   
   &:disabled {

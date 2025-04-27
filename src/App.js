@@ -65,7 +65,6 @@ function App() {
       <AppContainer>
         <Header>
           <Title>HLTE Tag Explorer</Title>
-          <Subtitle>Discover the trending and latest tags in the system</Subtitle>
         </Header>
         
         <RefreshButton 
@@ -77,25 +76,23 @@ function App() {
 
         <MainContent>
           <TagSection 
-            title="Popular Tags" 
-            tags={topTags} 
-            isLoading={topTagsLoading} 
-            error={topTagsError}
-            showTimestamp={false}
-          />
-          
-          <TagSection 
             title="Recently Used Tags" 
             tags={recentTags} 
             isLoading={recentTagsLoading} 
             error={recentTagsError}
             showTimestamp={true}
+            isRecentList={true}
+          />
+          
+          <TagSection 
+            title="Popular Tags" 
+            tags={topTags} 
+            isLoading={topTagsLoading} 
+            error={topTagsError}
+            showTimestamp={false}
+            isRecentList={false}
           />
         </MainContent>
-
-        <Footer>
-          <p>© {new Date().getFullYear()} HLTE Tag Explorer • Cyberpunk CGA Edition</p>
-        </Footer>
       </AppContainer>
     </ThemeProvider>
   );
