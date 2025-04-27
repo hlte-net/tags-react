@@ -106,12 +106,11 @@ export const TagName = styled.span`
 `;
 
 export const SpecialTagName = styled(TagName)`
-  color: #ea4c89;
+  color: #00C2CB;
   font-weight: 600;
-  text-decoration: underline;
   
   &::before {
-    color: #ea4c89;
+    color: #00C2CB;
     font-weight: 700;
   }
   

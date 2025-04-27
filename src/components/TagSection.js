@@ -50,9 +50,14 @@ const TagSection = ({ title, tags, isLoading, error, showTimestamp, isRecentList
               key={index} 
               $accent={!isRecentList && index < 3}
               $isRecent={isRecentList}
+              style={tag.tag === 'publish' ? { 
+                background: 'rgba(0, 194, 203, 0.1)',
+                borderLeftColor: '#00C2CB',
+                borderLeftWidth: '3px'
+              } : {}}
             >
               {tag.tag === 'publish' ? (
-                <a href="https://a.window.into.ryanj.xyz/" target="_blank" rel="noopener noreferrer">
+                <a href="https://a.window.into.ryanj.xyz/" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
                   <SpecialTagName>{tag.tag}</SpecialTagName>
                 </a>
               ) : (
