@@ -73,7 +73,7 @@ function App() {
       <GlobalStyle />
       <AppContainer>
         <Header>
-          <Title>HLTE Tag Explorer</Title>
+          <Title>HLTE Explorer</Title>
         </Header>
         
         <StatsSection 

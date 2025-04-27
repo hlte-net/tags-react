@@ -1,5 +1,5 @@
 import React from 'react';
-import { Section, SectionTitle, TagList, TagItem, TagName, TagCount, TimeStamp, LoadingContainer, LoadingText, ErrorMessage } from './styled/StyledComponents';
+import { Section, SectionTitle, TagList, TagItem, TagName, SpecialTagName, TagCount, TimeStamp, LoadingContainer, LoadingText, ErrorMessage } from './styled/StyledComponents';
 
 // Format timestamp to a readable date
 const formatTimestamp = (timestamp) => {
@@ -51,7 +51,13 @@ const TagSection = ({ title, tags, isLoading, error, showTimestamp, isRecentList
               $accent={!isRecentList && index < 3}
               $isRecent={isRecentList}
             >
-              <TagName $accent={!isRecentList && index < 3}>{tag.tag}</TagName>
+              {tag.tag === 'publish' ? (
+                <a href="https://a.window.into.ryanj.xyz/" target="_blank" rel="noopener noreferrer">
+                  <SpecialTagName>{tag.tag}</SpecialTagName>
+                </a>
+              ) : (
+                <TagName $accent={!isRecentList && index < 3}>{tag.tag}</TagName>
+              )}
               {showTimestamp ? (
                 <TimeStamp>{formatTimestamp(tag.timestamp)}</TimeStamp>
               ) : (

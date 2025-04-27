@@ -105,6 +105,21 @@ export const TagName = styled.span`
   }
 `;
 
+export const SpecialTagName = styled(TagName)`
+  color: #ea4c89;
+  font-weight: 600;
+  text-decoration: underline;
+  
+  &::before {
+    color: #ea4c89;
+    font-weight: 700;
+  }
+  
+  &:hover {
+    opacity: 0.85;
+  }
+`;
+
 export const TagCount = styled.span`
   background: ${theme.colors.accentDark};
   color: ${theme.colors.blue};
