@@ -51,7 +51,7 @@ const TagSection = ({ title, tags, isLoading, error, showTimestamp, isRecentList
               $accent={!isRecentList && index < 3}
               $isRecent={isRecentList}
             >
-              <TagName>{tag.tag}</TagName>
+              <TagName $accent={!isRecentList && index < 3}>{tag.tag}</TagName>
               {showTimestamp ? (
                 <TimeStamp>{formatTimestamp(tag.timestamp)}</TimeStamp>
               ) : (
