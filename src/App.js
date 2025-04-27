@@ -5,10 +5,7 @@ import {
   AppContainer, 
   Header, 
   Title, 
-  Subtitle, 
-  MainContent, 
-  Footer, 
-  RefreshButton 
+  MainContent
 } from './components/styled/StyledComponents';
 import TagSection from './components/TagSection';
 import StatsSection from './components/StatsSection';
@@ -24,11 +21,8 @@ function App() {
   const [topTagsError, setTopTagsError] = useState(null);
   const [recentTagsError, setRecentTagsError] = useState(null);
   const [statsError, setStatsError] = useState(null);
-  const [isRefreshing, setIsRefreshing] = useState(false);
 
   const fetchData = async () => {
-    setIsRefreshing(true);
-    
     try {
       // Fetch top tags
       setTopTagsLoading(true);
@@ -67,8 +61,6 @@ function App() {
     } finally {
       setStatsLoading(false);
     }
-    
-    setIsRefreshing(false);
   };
 
   useEffect(() => {
@@ -89,13 +81,6 @@ function App() {
           isLoading={statsLoading}
           error={statsError}
         />
-        
-        <RefreshButton 
-          onClick={fetchData} 
-          disabled={isRefreshing || topTagsLoading || recentTagsLoading || statsLoading}
-        >
-          {isRefreshing ? 'Refreshing...' : 'Refresh Data'}
-        </RefreshButton>
 
         <MainContent>
           <TagSection 
