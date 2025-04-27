@@ -34,17 +34,6 @@ const GlobalStyle = createGlobalStyle`
     padding: 20px;
     font-size: 16px;
     line-height: 1.5;
-    background-image: 
-      linear-gradient(
-        rgba(0, 10, 20, 0.8) 1px, 
-        transparent 1px
-      ),
-      linear-gradient(
-        90deg, 
-        rgba(0, 10, 20, 0.8) 1px, 
-        transparent 1px
-      );
-    background-size: 20px 20px;
   }
   
   code {

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// Base URL for API calls - adjust this based on your server configuration
-const BASE_URL = 'http://localhost:56555';
+// Base URL for API calls
+const BASE_URL = 'https://ryan.hlte.net';
 
 // Get top N tags by usage count
 export const getTopTags = async (limit = 10) => {

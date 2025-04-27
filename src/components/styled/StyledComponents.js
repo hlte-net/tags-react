@@ -1,36 +1,5 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { theme } from '../../styles/GlobalStyle';
-
-// Animations
-const scanlineAnimation = keyframes`
-  0% {
-    transform: translateY(-100%);
-  }
-  100% {
-    transform: translateY(100%);
-  }
-`;
-
-const blinkAnimation = keyframes`
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-`;
-
-const pulseAnimation = keyframes`
-  0% {
-    box-shadow: 0 0 5px ${theme.colors.primary};
-  }
-  50% {
-    box-shadow: 0 0 20px ${theme.colors.primary};
-  }
-  100% {
-    box-shadow: 0 0 5px ${theme.colors.primary};
-  }
-`;
 
 // Layout Components
 export const AppContainer = styled.div`
@@ -38,22 +7,6 @@ export const AppContainer = styled.div`
   margin: 0 auto;
   position: relative;
   padding: 20px;
-  
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-      transparent 50%,
-      rgba(0, 0, 0, 0.1) 50%
-    );
-    background-size: 100% 4px;
-    pointer-events: none;
-    z-index: 10;
-  }
 `;
 
 export const Header = styled.header`
@@ -62,19 +15,6 @@ export const Header = styled.header`
   margin-bottom: 30px;
   border-bottom: 2px solid ${theme.colors.primary};
   padding-bottom: 10px;
-  overflow: hidden;
-  
-  &::after {
-    content: "";
-    position: absolute;
-    height: 2px;
-    width: 100%;
-    left: 0;
-    top: 0;
-    background: ${theme.colors.primary};
-    animation: ${scanlineAnimation} 4s linear infinite;
-    opacity: 0.5;
-  }
 `;
 
 export const Title = styled.h1`
@@ -83,8 +23,6 @@ export const Title = styled.h1`
   text-transform: uppercase;
   letter-spacing: 4px;
   margin-bottom: 10px;
-  text-shadow: 0 0 10px ${theme.colors.primary};
-  animation: ${blinkAnimation} 2s infinite;
 `;
 
 export const Subtitle = styled.p`
@@ -108,11 +46,6 @@ export const Section = styled.section`
   border-radius: 4px;
   padding: 20px;
   box-shadow: 0 0 10px ${theme.colors.primary};
-  animation: ${pulseAnimation} 4s infinite;
-  
-  &:hover {
-    box-shadow: 0 0 20px ${theme.colors.primary};
-  }
 `;
 
 export const SectionTitle = styled.h2`
@@ -181,7 +114,6 @@ export const LoadingText = styled.span`
   
   &::after {
     content: "...";
-    animation: ${blinkAnimation} 1s infinite;
   }
 `;
 
@@ -200,4 +132,30 @@ export const Footer = styled.footer`
   color: ${theme.colors.primary};
   border-top: 1px solid ${theme.colors.primary};
   padding-top: 15px;
+`;
+
+export const RefreshButton = styled.button`
+  background-color: ${theme.colors.darkBlue};
+  color: ${theme.colors.primary};
+  border: 2px solid ${theme.colors.primary};
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-family: ${theme.fonts.main};
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin: 0 auto 20px;
+  display: block;
+  
+  &:hover {
+    background-color: ${theme.colors.darkCyan};
+  }
+  
+  &:active {
+    transform: translateY(2px);
+  }
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 `;
