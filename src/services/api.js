@@ -24,3 +24,14 @@ export const getRecentTags = async (limit = 10) => {
     throw error;
   }
 };
+
+// Get database statistics (entry count and tag count)
+export const getDBStats = async () => {
+  try {
+    const response = await axios.get(`${BASE_URL}/stats`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching database stats:', error);
+    throw error;
+  }
+};

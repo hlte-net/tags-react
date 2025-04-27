@@ -200,3 +200,55 @@ export const RefreshButton = styled.button`
     box-shadow: none;
   }
 `;
+
+// Stats Components
+export const StatsContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 25px;
+  background: ${theme.colors.background};
+  border-radius: ${theme.borderRadius};
+  padding: 15px;
+  box-shadow: ${theme.boxShadow};
+  border: 1px solid ${theme.colors.accentDark};
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+`;
+
+export const StatCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 30px;
+  background: white;
+  border-radius: ${theme.borderRadius};
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+  }
+  
+  @media (max-width: 768px) {
+    width: 80%;
+  }
+`;
+
+export const StatValue = styled.div`
+  font-size: ${theme.fontSize.xl};
+  font-weight: 600;
+  color: ${theme.colors.blue};
+  margin-bottom: 5px;
+`;
+
+export const StatLabel = styled.div`
+  font-size: ${theme.fontSize.sm};
+  color: ${theme.colors.text};
+  font-weight: 500;
+`;

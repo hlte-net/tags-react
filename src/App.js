@@ -11,18 +11,22 @@ import {
   RefreshButton 
 } from './components/styled/StyledComponents';
 import TagSection from './components/TagSection';
-import { getTopTags, getRecentTags } from './services/api';
+import StatsSection from './components/StatsSection';
+import { getTopTags, getRecentTags, getDBStats } from './services/api';
 
 function App() {
   const [topTags, setTopTags] = useState([]);
   const [recentTags, setRecentTags] = useState([]);
+  const [dbStats, setDbStats] = useState({ entries_count: 0, tags_count: 0 });
   const [topTagsLoading, setTopTagsLoading] = useState(true);
   const [recentTagsLoading, setRecentTagsLoading] = useState(true);
+  const [statsLoading, setStatsLoading] = useState(true);
   const [topTagsError, setTopTagsError] = useState(null);
   const [recentTagsError, setRecentTagsError] = useState(null);
+  const [statsError, setStatsError] = useState(null);
   const [isRefreshing, setIsRefreshing] = useState(false);
 
-  const fetchTags = async () => {
+  const fetchData = async () => {
     setIsRefreshing(true);
     
     try {
@@ -51,12 +55,25 @@ function App() {
       setRecentTagsLoading(false);
     }
     
+    try {
+      // Fetch database stats
+      setStatsLoading(true);
+      const statsData = await getDBStats();
+      setDbStats(statsData);
+      setStatsError(null);
+    } catch (error) {
+      setStatsError('Failed to load database statistics');
+      console.error('Error fetching database stats:', error);
+    } finally {
+      setStatsLoading(false);
+    }
+    
     setIsRefreshing(false);
   };
 
   useEffect(() => {
     // Initial data fetch
-    fetchTags();
+    fetchData();
   }, []);
 
   return (
@@ -67,11 +84,17 @@ function App() {
           <Title>HLTE Tag Explorer</Title>
         </Header>
         
+        <StatsSection 
+          stats={dbStats}
+          isLoading={statsLoading}
+          error={statsError}
+        />
+        
         <RefreshButton 
-          onClick={fetchTags} 
-          disabled={isRefreshing || topTagsLoading || recentTagsLoading}
+          onClick={fetchData} 
+          disabled={isRefreshing || topTagsLoading || recentTagsLoading || statsLoading}
         >
-          {isRefreshing ? 'Refreshing...' : 'Refresh Tags'}
+          {isRefreshing ? 'Refreshing...' : 'Refresh Data'}
         </RefreshButton>
 
         <MainContent>
